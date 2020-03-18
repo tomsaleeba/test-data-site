@@ -24,20 +24,23 @@ EOF
 rm -f $outputDir/*
 mkdir -p $outputDir
 
+function getSize {
+  echo $(bash -c "stat -c '%s' $1 | numfmt --to=si")
+}
+
 for curr in $(ls $inputDir); do
   echo "[INFO] processing $curr"
   baseFileName=`bash -c "echo $curr | sed 's/.jpg//'"`
   echo -e "### $baseFileName\n" >> $theReadme
   echo -e "![]($outputDir/${baseFileName}-${smallestScale}px.jpg)\n" >> $theReadme
-  echo -e "| Size | Link |" >> $theReadme
+  echo -e "| Size | Link | Size |" >> $theReadme
   echo -e "|--|--|" >> $theReadme
-  originalFile=$outputDir/${baseFileName}-original.jpg
-  ln -s ../$inputDir/$curr $originalFile
-  echo -e "| original | [link]($originalFile) |" >> $theReadme
+  originalFile=$inputDir/$curr
+  echo -e "| original | [link]($originalFile) | $(getSize $originalFile) |" >> $theReadme
   for currScale in 1000 $smallestScale; do
     scaledFile=$outputDir/${baseFileName}-${currScale}px.jpg
     convert -scale $currScale $inputDir/$curr $scaledFile
-    echo -e "| $currScale | [link]($scaledFile)|" >> $theReadme
+    echo -e "| ${currScale}px | [link]($scaledFile) | $(getSize $scaledFile) |" >> $theReadme
   done
   echo -e "\n\n" >> $theReadme
 done

@@ -7,11 +7,11 @@ Things like photos or various sizes, including ones with EXIF data.
 
 ![](./generated/cannon-100px.jpg)
 
-| Size | Link |
+| Size | Link | Size |
 |--|--|
-| original | [link](./generated/cannon-original.jpg) |
-| 1000 | [link](./generated/cannon-1000px.jpg)|
-| 100 | [link](./generated/cannon-100px.jpg)|
+| original | [link](./originals/cannon.jpg) | 1.2M |
+| 1000px | [link](./generated/cannon-1000px.jpg) | 187K |
+| 100px | [link](./generated/cannon-100px.jpg) | 29K |
 
 
 
@@ -19,11 +19,11 @@ Things like photos or various sizes, including ones with EXIF data.
 
 ![](./generated/lunch-100px.jpg)
 
-| Size | Link |
+| Size | Link | Size |
 |--|--|
-| original | [link](./generated/lunch-original.jpg) |
-| 1000 | [link](./generated/lunch-1000px.jpg)|
-| 100 | [link](./generated/lunch-100px.jpg)|
+| original | [link](./originals/lunch.jpg) | 684K |
+| 1000px | [link](./generated/lunch-1000px.jpg) | 107K |
+| 100px | [link](./generated/lunch-100px.jpg) | 28K |
 
 
 
@@ -31,11 +31,11 @@ Things like photos or various sizes, including ones with EXIF data.
 
 ![](./generated/paddleboat-100px.jpg)
 
-| Size | Link |
+| Size | Link | Size |
 |--|--|
-| original | [link](./generated/paddleboat-original.jpg) |
-| 1000 | [link](./generated/paddleboat-1000px.jpg)|
-| 100 | [link](./generated/paddleboat-100px.jpg)|
+| original | [link](./originals/paddleboat.jpg) | 878K |
+| 1000px | [link](./generated/paddleboat-1000px.jpg) | 135K |
+| 100px | [link](./generated/paddleboat-100px.jpg) | 30K |
 
 
 
@@ -43,11 +43,11 @@ Things like photos or various sizes, including ones with EXIF data.
 
 ![](./generated/saboteur-100px.jpg)
 
-| Size | Link |
+| Size | Link | Size |
 |--|--|
-| original | [link](./generated/saboteur-original.jpg) |
-| 1000 | [link](./generated/saboteur-1000px.jpg)|
-| 100 | [link](./generated/saboteur-100px.jpg)|
+| original | [link](./originals/saboteur.jpg) | 272K |
+| 1000px | [link](./generated/saboteur-1000px.jpg) | 78K |
+| 100px | [link](./generated/saboteur-100px.jpg) | 25K |
 
 
 
@@ -55,11 +55,11 @@ Things like photos or various sizes, including ones with EXIF data.
 
 ![](./generated/thomas-rolling-100px.jpg)
 
-| Size | Link |
+| Size | Link | Size |
 |--|--|
-| original | [link](./generated/thomas-rolling-original.jpg) |
-| 1000 | [link](./generated/thomas-rolling-1000px.jpg)|
-| 100 | [link](./generated/thomas-rolling-100px.jpg)|
+| original | [link](./originals/thomas-rolling.jpg) | 1.5M |
+| 1000px | [link](./generated/thomas-rolling-1000px.jpg) | 208K |
+| 100px | [link](./generated/thomas-rolling-100px.jpg) | 29K |
 
 
 
