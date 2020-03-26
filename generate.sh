@@ -24,8 +24,26 @@ EOF
 rm -f $outputDir/*
 mkdir -p $outputDir
 
-function getSize {
+function getFilesize {
   echo $(bash -c "stat -c '%s' $1 | numfmt --to=si")
+}
+
+function getDimensions {
+  # the percent escapes comes from https://imagemagick.org/script/escape.php
+  echo $(identify -format "%wx%h" $1)
+}
+
+function getMegapixels {
+  # the fx: is from ImageMagick https://imagemagick.org/script/fx.php
+  echo $(identify -format "%[fx:round((w*h)/1000000)]" $1)
+}
+
+function hasGpsInfo {
+  echo $(exiv2 -pa pr $1 | grep Exif.GPSInfo.GPSLatitude > /dev/null && echo yes || echo no)
+}
+
+function fixWhitespace {
+  echo $(cat - | tr -d '\n' | sed 's/\s\{2,\}/ /g')
 }
 
 for curr in $(ls $inputDir); do
@@ -33,14 +51,18 @@ for curr in $(ls $inputDir); do
   baseFileName=`bash -c "echo $curr | sed 's/.jpg//'"`
   echo -e "### $baseFileName\n" >> $theReadme
   echo -e "![]($outputDir/${baseFileName}-${smallestScale}px.jpg)\n" >> $theReadme
-  echo -e "| Size | Link | Size |" >> $theReadme
-  echo -e "|--|--|" >> $theReadme
+  echo -e "| Size | Link | File size | Dimensions | Megapixels | Has GPS |" >> $theReadme
+  echo -e "|--|--|--|--|--|--|" >> $theReadme
   originalFile=$inputDir/$curr
-  echo -e "| original | [link]($originalFile) | $(getSize $originalFile) |" >> $theReadme
-  for currScale in 1000 $smallestScale; do
+  echo -e "| original | [link]($originalFile) | $(getFilesize $originalFile) |
+    $(getDimensions $originalFile) | $(getMegapixels $originalFile)mp |
+    $(hasGpsInfo $originalFile) |" | fixWhitespace >> $theReadme
+  for currScale in 3000 2000 1000 $smallestScale; do
     scaledFile=$outputDir/${baseFileName}-${currScale}px.jpg
     convert -scale $currScale $inputDir/$curr $scaledFile
-    echo -e "| ${currScale}px | [link]($scaledFile) | $(getSize $scaledFile) |" >> $theReadme
+    echo -e "| ${currScale}px | [link]($scaledFile) | $(getFilesize $scaledFile)
+    | $(getDimensions $scaledFile) | $(getMegapixels $scaledFile)mp |
+      $(hasGpsInfo $scaledFile) |" | fixWhitespace >> $theReadme
   done
   echo -e "\n\n" >> $theReadme
 done
