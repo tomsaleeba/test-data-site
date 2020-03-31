@@ -35,7 +35,7 @@ function getDimensions {
 
 function getMegapixels {
   # the fx: is from ImageMagick https://imagemagick.org/script/fx.php
-  echo $(identify -format "%[fx:round((w*h)/1000000)]" $1)
+  echo $(identify -precision 9 -format "%[fx:(w*h)/1000000]" $1 | xargs printf "%0.1f\n")
 }
 
 function hasGpsInfo {
