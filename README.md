@@ -7,6 +7,8 @@ Things like photos or various sizes, including ones with EXIF data.
 
 ![](./generated/cannon-100px.jpg)
 
+[Force download page](./generated/cannon.html)
+
 | Size | Link | File size | Dimensions | Megapixels | Has GPS |
 |--|--|--|--|--|--|
 | original | [link](./originals/cannon.jpg) | 1.2M | 3264x1836 | 6.0mp | yes |
@@ -17,9 +19,27 @@ Things like photos or various sizes, including ones with EXIF data.
 
 
 
+### insect-gps-outside-australia
+
+![](./generated/insect-gps-outside-australia-100px.jpg)
+
+[Force download page](./generated/insect-gps-outside-australia.html)
+
+| Size | Link | File size | Dimensions | Megapixels | Has GPS |
+|--|--|--|--|--|--|
+| original | [link](./originals/insect-gps-outside-australia.jpg) | 1.8M | 2560x1280 | 3.3mp | yes |
+| 3000px | [link](./generated/insect-gps-outside-australia-3000px.jpg) | 2.0M | 3000x1500 | 4.5mp | yes |
+| 2000px | [link](./generated/insect-gps-outside-australia-2000px.jpg) | 1.1M | 2000x1000 | 2.0mp | yes |
+| 1000px | [link](./generated/insect-gps-outside-australia-1000px.jpg) | 384K | 1000x500 | 0.5mp | yes |
+| 100px | [link](./generated/insect-gps-outside-australia-100px.jpg) | 75K | 100x50 | 0.0mp | yes |
+
+
+
 ### lunch
 
 ![](./generated/lunch-100px.jpg)
+
+[Force download page](./generated/lunch.html)
 
 | Size | Link | File size | Dimensions | Megapixels | Has GPS |
 |--|--|--|--|--|--|
@@ -35,6 +55,8 @@ Things like photos or various sizes, including ones with EXIF data.
 
 ![](./generated/paddleboat-100px.jpg)
 
+[Force download page](./generated/paddleboat.html)
+
 | Size | Link | File size | Dimensions | Megapixels | Has GPS |
 |--|--|--|--|--|--|
 | original | [link](./originals/paddleboat.jpg) | 878K | 3264x1836 | 6.0mp | no |
@@ -48,6 +70,8 @@ Things like photos or various sizes, including ones with EXIF data.
 ### pigeon
 
 ![](./generated/pigeon-100px.jpg)
+
+[Force download page](./generated/pigeon.html)
 
 | Size | Link | File size | Dimensions | Megapixels | Has GPS |
 |--|--|--|--|--|--|
@@ -63,6 +87,8 @@ Things like photos or various sizes, including ones with EXIF data.
 
 ![](./generated/saboteur-100px.jpg)
 
+[Force download page](./generated/saboteur.html)
+
 | Size | Link | File size | Dimensions | Megapixels | Has GPS |
 |--|--|--|--|--|--|
 | original | [link](./originals/saboteur.jpg) | 2.0M | 3264x1836 | 6.0mp | yes |
@@ -76,6 +102,8 @@ Things like photos or various sizes, including ones with EXIF data.
 ### samsung-s20-ultra-108mp-photo
 
 ![](./generated/samsung-s20-ultra-108mp-photo-100px.jpg)
+
+[Force download page](./generated/samsung-s20-ultra-108mp-photo.html)
 
 | Size | Link | File size | Dimensions | Megapixels | Has GPS |
 |--|--|--|--|--|--|
@@ -91,6 +119,8 @@ Things like photos or various sizes, including ones with EXIF data.
 
 ![](./generated/street-100px.jpg)
 
+[Force download page](./generated/street.html)
+
 | Size | Link | File size | Dimensions | Megapixels | Has GPS |
 |--|--|--|--|--|--|
 | original | [link](./originals/street.jpg) | 7.5M | 4656x3492 | 16.3mp | yes |
@@ -104,6 +134,8 @@ Things like photos or various sizes, including ones with EXIF data.
 ### thomas-rolling
 
 ![](./generated/thomas-rolling-100px.jpg)
+
+[Force download page](./generated/thomas-rolling.html)
 
 | Size | Link | File size | Dimensions | Megapixels | Has GPS |
 |--|--|--|--|--|--|

@@ -46,11 +46,71 @@ function fixWhitespace {
   echo $(cat - | tr -d '\n' | sed 's/\s\{2,\}/ /g')
 }
 
+function writeDownloadHtmlStart {
+  outFileName=$1
+  cat <<EOF > $outFileName
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+    }
+
+    button {
+      margin: 3em 0;
+    }
+  </style>
+</head>
+<body>
+EOF
+}
+
+function writeDownloadHtmlEnd {
+  outFileName=$1
+  cat <<EOF >> $outFileName
+  <script charset="utf-8">
+    async function doDownload(filename) {
+      try {
+        const resp = await fetch(filename)
+        const blob = await resp.blob()
+        triggerDownload(blob, filename)
+      } catch (err) {
+        alert('We failed: ' + err)
+      }
+    }
+
+    function triggerDownload(blob, filename) {
+      if (window.navigator && window.navigator.msSaveOrOpenBlob) {
+        window.navigator.msSaveOrOpenBlob(blob, filename)
+        return
+      }
+      const url = window.URL.createObjectURL(blob)
+      const a = document.createElement('a')
+      document.body.appendChild(a)
+      a.href = url
+      a.download = filename
+      a.click()
+      window.URL.revokeObjectURL(url)
+      document.body.removeChild(a)
+    }
+  </script>
+</body>
+</html>
+EOF
+}
+
 for curr in $(ls $inputDir); do
   echo "[INFO] processing $curr"
   baseFileName=`bash -c "echo $curr | sed 's/.jpg//'"`
+  htmlFileName=$outputDir/$baseFileName.html
+  writeDownloadHtmlStart $htmlFileName
+
   echo -e "### $baseFileName\n" >> $theReadme
   echo -e "![]($outputDir/${baseFileName}-${smallestScale}px.jpg)\n" >> $theReadme
+  echo -e "[Force download page]($htmlFileName)\n" >> $theReadme
+
   echo -e "| Size | Link | File size | Dimensions | Megapixels | Has GPS |" >> $theReadme
   echo -e "|--|--|--|--|--|--|" >> $theReadme
   originalFile=$inputDir/$curr
@@ -58,11 +118,15 @@ for curr in $(ls $inputDir); do
     $(getDimensions $originalFile) | $(getMegapixels $originalFile)mp |
     $(hasGpsInfo $originalFile) |" | fixWhitespace >> $theReadme
   for currScale in 3000 2000 1000 $smallestScale; do
-    scaledFile=$outputDir/${baseFileName}-${currScale}px.jpg
-    convert -scale $currScale $inputDir/$curr $scaledFile
-    echo -e "| ${currScale}px | [link]($scaledFile) | $(getFilesize $scaledFile)
-    | $(getDimensions $scaledFile) | $(getMegapixels $scaledFile)mp |
-      $(hasGpsInfo $scaledFile) |" | fixWhitespace >> $theReadme
+    scaledFile=${baseFileName}-${currScale}px.jpg
+    scaledFilePath=$outputDir/$scaledFile
+    convert -scale $currScale $inputDir/$curr $scaledFilePath
+    echo -e "| ${currScale}px | [link]($scaledFilePath) | $(getFilesize $scaledFilePath)
+    | $(getDimensions $scaledFilePath) | $(getMegapixels $scaledFilePath)mp |
+      $(hasGpsInfo $scaledFilePath) |" | fixWhitespace >> $theReadme
+
+    echo "<button onclick=\"doDownload('$scaledFile')\">Download $scaledFile</button>" >> $htmlFileName
   done
+  writeDownloadHtmlEnd $htmlFileName
   echo -e "\n\n" >> $theReadme
 done

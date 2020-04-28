@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+    }
+
+    button {
+      margin: 3em 0;
+    }
+  </style>
+</head>
+<body>
+<button onclick="doDownload('pigeon-3000px.jpg')">Download pigeon-3000px.jpg</button>
+<button onclick="doDownload('pigeon-2000px.jpg')">Download pigeon-2000px.jpg</button>
+<button onclick="doDownload('pigeon-1000px.jpg')">Download pigeon-1000px.jpg</button>
+<button onclick="doDownload('pigeon-100px.jpg')">Download pigeon-100px.jpg</button>
+  <script charset="utf-8">
+    async function doDownload(filename) {
+      try {
+        const resp = await fetch(filename)
+        const blob = await resp.blob()
+        triggerDownload(blob, filename)
+      } catch (err) {
+        alert('We failed: ' + err)
+      }
+    }
+
+    function triggerDownload(blob, filename) {
+      if (window.navigator && window.navigator.msSaveOrOpenBlob) {
+        window.navigator.msSaveOrOpenBlob(blob, filename)
+        return
+      }
+      const url = window.URL.createObjectURL(blob)
+      const a = document.createElement('a')
+      document.body.appendChild(a)
+      a.href = url
+      a.download = filename
+      a.click()
+      window.URL.revokeObjectURL(url)
+      document.body.removeChild(a)
+    }
+  </script>
+</body>
+</html>
