@@ -52,6 +52,7 @@ function writeDownloadHtmlStart {
 <!DOCTYPE html>
 <html>
 <head>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <style>
     body {
       display: flex;
@@ -59,7 +60,8 @@ function writeDownloadHtmlStart {
     }
 
     button {
-      margin: 3em 0;
+      margin-bottom: 1em;
+      font-size: 3em;
     }
   </style>
 </head>
